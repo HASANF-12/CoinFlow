@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* Palette taken from the app icon: teal-green coin on a deep green-black. */
+@theme {
+  --color-bg: #07110f;
+  --color-surface: #0e1c19;
+  --color-surface-2: #152723;
+  --color-surface-3: #1e342e;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-ink: #eef6f3;
+  --color-muted: #a3b8b2;
+  --color-faint: #748b85;
+  --color-brand: #2bb39a;
+  --color-brand-soft: rgb(43 179 154 / 0.14);
+  --color-brand-ink: #032019;
+  --color-income: #3ddc97;
+  --color-expense: #ff8593;
+  --color-warn: #f6c453;
+  --color-danger: #ff6b7d;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Arabic', sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  /* Capacitor exposes insets as CSS variables on Android; browsers use env(). */
+  --sat: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+  --sab: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
+  --nav-h: 68px;
+}
+
+/* Base rules live in the base layer so Tailwind utilities (e.g. text-5xl on inputs) can override them. */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+
+  button,
+  [role='button'] {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+    font-size: 16px; /* prevents zoom-on-focus */
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility pt-safe {
+  padding-top: calc(var(--sat) + 12px);
+}
+
+@utility pb-nav {
+  padding-bottom: calc(var(--nav-h) + var(--sab) + var(--ad-h, 0px) + 24px);
+}
+
+@utility pb-safe {
+  padding-bottom: calc(var(--sab) + 16px);
+}
+
+@utility press {
+  transition: transform 120ms ease, background-color 150ms ease, opacity 150ms ease;
+  &:active {
+    transform: scale(0.97);
+  }
+}

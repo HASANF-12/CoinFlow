@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CoinFlow</string>
+    <string name="title_activity_main">CoinFlow</string>
+    <string name="package_name">com.coinflow.app</string>
+    <string name="custom_url_scheme">com.coinflow.app</string>
+    <!-- AdMob App ID from the published v1.0.4 build. -->
+    <string name="admob_app_id">ca-app-pub-5713204301714205~2049708488</string>
+</resources>

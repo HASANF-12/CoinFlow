@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets
+.env*
+!.env.example
+*.jks
+*.keystore
+android/keystore.properties
+
+# Firebase config (download again from Firebase console > Project settings if lost)
+android/app/google-services.json
